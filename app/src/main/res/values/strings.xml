@@ -1,3 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">DayDayNote</string>
     <string name="change_password">Change password</string>
@@ -6,4 +7,5 @@
     <string name="current_date_format">ww, MMM d</string>
     <string name="add">Add</string>
     <string name="chart">Chart</string>
+    <string name="login_or_sign_up">Log in / Sign up</string>
 </resources>
