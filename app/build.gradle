@@ -9,6 +9,8 @@ android {
         targetSdkVersion 29
         versionCode 1
         versionName "1.0"
+        buildConfigField("String", "PARSE_APPLICATION_ID", "\"$rootProject.parseConfig.applicationId\"")
+        buildConfigField("String", "PARSE_SERVER", "\"$rootProject.parseConfig.server\"")
     }
     buildTypes {
         release {

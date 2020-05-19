@@ -1,3 +1,22 @@
+ext {
+    parseConfig = getServerConfigField()
+}
+
+def getServerConfigField() {
+    def config = new Properties()
+    def configFile = rootProject.file("parse.properties")
+    if (configFile.exists() && configFile.isFile()) {
+        Properties properties = new Properties()
+        properties.load(configFile.newDataInputStream())
+        config.applicationId = properties.getProperty('applicationId')
+        config.server = properties.getProperty('server')
+    } else {
+        config.applicationId = "daydaynote"
+        config.server = "http://127.0.0.1/parse"
+    }
+    return config
+}
+
 buildscript {
     repositories {
         google()
