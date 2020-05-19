@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -64,7 +65,23 @@ public class MainActivity extends AppCompatActivity {
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                 Toast.makeText(MainActivity.this, item.getTitle(), Toast.LENGTH_SHORT).show();
                 mDrawerLayout.closeDrawer(GravityCompat.START);
+                switch (item.getItemId()) {
+                    case R.id.menu_login_or_sign_up:
+                        LoginManager.setLogin(true);
+                        break;
+                    case R.id.menu_logout:
+                        LoginManager.setLogin(false);
+                        break;
+                }
                 return true;
+            }
+        });
+        updateNavigationViewMenu();
+
+        mDrawerLayout.addDrawerListener(new DrawerLayout.SimpleDrawerListener() {
+            @Override
+            public void onDrawerStateChanged(int newState) {
+                updateNavigationViewMenu();
             }
         });
     }
@@ -80,5 +97,22 @@ public class MainActivity extends AppCompatActivity {
         @SuppressLint("SimpleDateFormat")
         SimpleDateFormat formatter = new SimpleDateFormat(format);
         getSupportActionBar().setTitle(formatter.format(mCurrentDate));
+    }
+
+    private void updateNavigationViewMenu() {
+        Menu menu = mNavigationView.getMenu();
+        if (LoginManager.isLogin()) {
+            menu.findItem(R.id.menu_login_or_sign_up).setVisible(false);
+            menu.findItem(R.id.menu_password).setVisible(true);
+            menu.findItem(R.id.menu_logout).setVisible(true);
+        } else {
+            menu.findItem(R.id.menu_login_or_sign_up).setVisible(true);
+            menu.findItem(R.id.menu_password).setVisible(false);
+            menu.findItem(R.id.menu_logout).setVisible(false);
+        }
+        TextView textViewTitle = findViewById(R.id.title);
+        if (textViewTitle != null) {
+            textViewTitle.setText(LoginManager.getUserName());
+        }
     }
 }

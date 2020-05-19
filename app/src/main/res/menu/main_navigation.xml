@@ -2,5 +2,6 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <item android:id="@+id/menu_chart" android:title="@string/chart"/>
     <item android:id="@+id/menu_password" android:title="@string/change_password"/>
+    <item android:id="@+id/menu_login_or_sign_up" android:title="@string/login_or_sign_up"/>
     <item android:id="@+id/menu_logout" android:title="@string/logout"/>
 </menu>
