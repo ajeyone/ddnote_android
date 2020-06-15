@@ -1,4 +1,4 @@
-package com.ajeyone.daydaynote;
+package com.ajeyone.daydaynote.home;
 
 import android.annotation.SuppressLint;
 import android.os.Bundle;
@@ -14,6 +14,8 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 
+import com.ajeyone.daydaynote.LoginManager;
+import com.ajeyone.daydaynote.R;
 import com.ajeyone.ui.utils.StatusBarUtil;
 import com.google.android.material.navigation.NavigationView;
 
